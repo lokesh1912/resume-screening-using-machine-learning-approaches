@@ -1,0 +1,92 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #custom-button {
+  padding: 10px;
+  color: white;
+  background-color: #009578;
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#custom-button:hover {
+  background-color: #00b28f;
+}
+
+#custom-text {
+  margin-left: 10px;
+  font-family: sans-serif;
+  color: #aaa;
+}
+#f{
+    text-align: center;
+    margin-top: 20%;
+}
+body{
+    background-color: black;
+}
+
+        </style>
+        
+    </head>
+    <body>
+      <h1 style="color: white; text-align: center;">Resume Screener</h1>
+        <div id="f">
+            <form action="/upload_file" method="POST" enctype="multipart/form-data" style="color: white;" >
+                <label for="cars" style="color: white; margin-right: 15px;">Choose a Role:</label>
+                <select name="roles" id="cars" style="font-size: larger; width: 20%; ">
+                  
+                  
+                  <option value="jd">Java Developer</option>
+                  <option value="pm">Project Manager</option>
+                  <option value="ba">Business Analyst</option>
+                  
+                  
+                </select>
+                <input type="file" name="file_name" multiple>
+              <input type="submit" value="submit" id="custom-button">
+              </form>
+              <br>
+              <br>
+              
+                
+              <!-- {%if msg[0]==1 %}
+                <div style="color: white;">Results are generated</div>
+              {% elif msg[0]==0 %}
+                <div style="color: white;">Results are generated</div>
+              {% else %}
+                <div style="color: white;">No Resume found</div>
+              {% endif %} -->
+
+              <ul style="color: white;">
+                {% for res in msg %}
+                <li>{{ res }}</li>
+                {% endfor %}
+                
+
+              </ul>
+
+</div>
+<script>
+    const realFileBtn = document.getElementById("real-file");
+const customBtn = document.getElementById("custom-button");
+const customTxt = document.getElementById("custom-text");
+
+customBtn.addEventListener("click", function() {
+realFileBtn.click();
+});
+
+
+
+
+</script>
+    </body>
+
+</html>
